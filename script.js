@@ -15,7 +15,7 @@ async function trainModel() {
 
   await model.fit(xs, ys, { epochs: 200 });
 
-  const prediction = model.predict(tf.tensor([5], [1, 1]));
+  const prediction = model.predict(tf.tensor([8], [1, 1]));
   const result = prediction.dataSync()[0];
 
   output.innerText = "Прогноза за x=5: " + result.toFixed(2);
