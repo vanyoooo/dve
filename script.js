@@ -1,6 +1,6 @@
 async function trainModel() {
   const output = document.getElementById("output");
-  output.innerText = "Обучаване... ⏳";
+ output.innerText = "Обучаване... ⏳";
 
   const model = tf.sequential();
   model.add(tf.layers.dense({ units: 1, inputShape: [1] }));
@@ -15,8 +15,9 @@ async function trainModel() {
 
   await model.fit(xs, ys, { epochs: 200 });
 
-  const prediction = model.predict(tf.tensor([11], [1, 1]));
+  // използваме въведеното число
+  const prediction = model.predict(tf.tensor([userValue], [1, 1]));
   const result = prediction.dataSync()[0];
 
-  output.innerText = "Прогноза за x=11: " + result.toFixed(2);
+  output.innerText = `Прогноза за x=${userValue}: ${result.toFixed(2)}`;
 }
