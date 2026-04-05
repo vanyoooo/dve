@@ -1,6 +1,16 @@
 async function trainModel() {
   const output = document.getElementById("output");
- output.innerText = "Обучаване... ⏳";
+
+  // взимаме стойността от input полето
+  const inputElement = document.getElementById("inputValue");
+  const userValue = parseFloat(inputElement.value);
+
+  if (isNaN(userValue)) {
+    output.innerText = "Моля въведи валидно число!";
+    return;
+  }
+
+  output.innerText = "Обучаване... ⏳";
 
   const model = tf.sequential();
   model.add(tf.layers.dense({ units: 1, inputShape: [1] }));
